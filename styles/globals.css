@@ -1,0 +1,32 @@
+html,
+body {
+  height: 100vh;
+  overflow: hidden;
+  padding: 0;
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+html {
+  box-sizing: border-box;
+}
+.ant-collapse-header {
+  font-weight: 600;
+  font-family: "Inter", sans-serif !important;
+  color: #2196f3 I !important;
+}
+.ant-tooltip-inner {
+  background-color: #201b35 !important;
+}
+.ant-collapse-content {
+  border-top: 1px solid white !important;
+}
+.sheet {
+  border-radius: 8px !important;
+}

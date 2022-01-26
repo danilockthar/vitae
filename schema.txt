@@ -1,0 +1,114 @@
+type User {
+   name: String!
+   email: String! @unique
+   role: Role!
+   authId: String! @unique
+   plan: Plan!
+   resumes: [Resume] @relation
+}
+type Resume {
+   author: User!
+   created_at: Date
+   updated_at: Date
+   downloaded: Int
+   design: String
+   showPersonalInfo: Boolean
+   personal_info: PersonalInfo
+   personalAttr: [String]
+   personalOrder: [String]
+   showExperience: Boolean
+   experience: [Experience]
+   experienceAttr: [String]
+   experienceOrder: [String]
+   showEducation: Boolean
+   education: [Education]
+   educationAttr: [String]
+   educationOrder: [String]
+   showSkills: Boolean
+   skills: [Skill]
+   skillsAttr: [String]
+   skillsOrder: [String]
+   showLanguages: Boolean
+   languages: [Skill]
+   languagesAttr: [String]
+   languagesOrder: [String]
+   orderResume: [String]
+}
+
+type Skill @embedded {
+   id: String
+   name: String
+   calification: Int
+   description: String
+   calificationDescription: String
+}
+
+type Education @embedded {
+   id: String
+   institution: String
+   startDate: String
+   stillHere: Boolean
+   endDate: String
+   city: String
+   country: String
+   grade: String
+   studyArea: String
+   website: String
+   description: String
+}
+
+type Experience @embedded {
+   id: String
+   company: String
+   city: String
+   jobName: String
+   startDate: String
+   stillHere: Boolean
+   endDate: String
+   jobDescription: String
+   website: String
+   country: String
+   companyDescription: String
+   accomplishes: String
+}
+
+type PersonalInfo @embedded {
+   firstName: String
+   lastName: String
+   jobPosition: String
+   email: String
+   phone: String
+   address: String
+   website: String
+   github: String
+   birthday: String
+   photo: String
+   birthplace: String
+   civilStatus: String
+   nacionality: String
+   skype: String
+   behance: String
+   facebook: String
+   instagram: String
+   linkedin: String
+   twitter: String
+   youtube: String
+}
+
+enum Plan {
+   FREE
+   MEMBER
+   VITAE
+}
+
+enum Role {
+   ADMIN
+   USER
+   AUTHOR
+}
+type Query {
+   allUsers: [User!]
+   userByEmail(email: String!):User
+   userByAuthId(authId: String!):User
+   allResumes: [Resume!]
+}
