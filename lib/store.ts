@@ -4,7 +4,29 @@ import { composeWithDevTools } from "redux-devtools-extension";
 import { Template } from "./interface";
 import reducers, { initialState } from "./reducers";
 
-let store;
+import { configureStore } from "@reduxjs/toolkit";
+import informationReducer from "./reducers/information-block";
+import experienceReducer from "./reducers/experience-block";
+import educationReducer from "./reducers/education-block";
+import languageReducer from "./reducers/language-block";
+import skillsReducer from "./reducers/skills-block";
+import basicsReducer from "./reducers/utils-reducer";
+
+const store = configureStore({
+	reducer: {
+		// Define a top-level state field named `todos`, handled by `todosReducer`
+		info: informationReducer,
+		experience: experienceReducer,
+		education: educationReducer,
+		lang: languageReducer,
+		skills: skillsReducer,
+		basics: basicsReducer,
+	},
+});
+
+export default store;
+
+/* let store;
 
 function initStore(preloadedState = initialState) {
   return createStore(
@@ -40,3 +62,4 @@ export function useStore(initialState) {
   const store = useMemo(() => initializeStore(initialState), [initialState]);
   return store;
 }
+ */
